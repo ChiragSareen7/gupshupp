@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-const API_BASE = process.env.REACT_APP_API_URL;
+const API_BASE = process.env.REACT_APP_API_URL || '';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -29,7 +29,8 @@ function App() {
 
   const loadPersonalities = async () => {
     try {
-      const response = await fetch(`${API_BASE}/.netlify/functions/personalities`);
+      const url = API_BASE ? `${API_BASE}/.netlify/functions/personalities` : `/.netlify/functions/personalities`;
+      const response = await fetch(url);
       const data = await response.json();
       setPersonalities(data.personalities);
     } catch (error) {
@@ -63,7 +64,8 @@ function App() {
       // Filter out system messages for API call
       const messagesToSend = updatedMessages.filter(msg => !msg.isSystem);
       
-      const response = await fetch(`${API_BASE}/.netlify/functions/generate_response`, {
+      const url = API_BASE ? `${API_BASE}/.netlify/functions/generate_response` : `/.netlify/functions/generate_response`;
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -94,7 +96,8 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE}/.netlify/functions/extract_memory`, {
+      const url = API_BASE ? `${API_BASE}/.netlify/functions/extract_memory` : `/.netlify/functions/extract_memory`;
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: messages })
@@ -124,7 +127,8 @@ function App() {
     setLoading(true);
     
     try {
-      const response = await fetch(`${API_BASE}/.netlify/functions/compare_personalities`, {
+      const url = API_BASE ? `${API_BASE}/.netlify/functions/compare_personalities` : `/.netlify/functions/compare_personalities`;
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
