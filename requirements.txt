@@ -1,0 +1,6 @@
+groq==0.4.1
+pydantic>=2.9.0
+flask==3.0.0
+flask-cors==4.0.0
+python-dotenv==1.0.0
+httpx<0.28.0
