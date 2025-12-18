@@ -26,77 +26,7 @@ A system that extracts user memory from conversations and transforms agent respo
 - Before/after personality comparison
 - Responsive, modern UI
 
-## 🏗️ Architecture
 
-```
-📁 Project Structure
-├── 📁 frontend/              # React application
-│   ├── src/
-│   │   ├── App.js           # Main React component
-│   │   ├── App.css          # Styles
-│   │   └── index.js         # Entry point
-│   ├── public/
-│   └── package.json
-│
-├── 📁 netlify/
-│   └── functions/           # Backend functions
-│       ├── extract_memory.py
-│       ├── generate_response.py
-│       ├── compare_personalities.py
-│       └── personalities.py
-│
-└── requirements.txt         # Python dependencies
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ (for frontend)
-- Python 3.11+ (for backend functions)
-- Groq API key
-
-### Local Development
-
-#### Frontend (React)
-```bash
-cd frontend
-npm install
-npm start
-```
-Frontend will run on http://localhost:3000
-
-#### Backend (Python Functions)
-```bash
-# Create virtual environment (if not already created)
-python3 -m venv venv
-
-# Activate virtual environment
-source venv/bin/activate  # On macOS/Linux
-# OR
-venv\Scripts\activate     # On Windows
-
-# Install Python dependencies
-pip install -r requirements.txt
-```
-
-#### Running the Full Stack
-
-Terminal 1 - Backend:
-```bash
-# Activate virtual environment
-source venv/bin/activate
-
-# Start Flask server
-python server.py
-# Backend runs on http://localhost:8888
-```
-
-Terminal 2 - Frontend:
-```bash
-cd frontend
-npm start
-# Frontend runs on http://localhost:3000
-```
 
 ## 📖 Usage
 
@@ -160,42 +90,7 @@ npm start
 ✅ **Modular Systems**: Clean separation of concerns  
 ✅ **Modular Architecture**: Clean separation of concerns  
 
-## 🔐 Environment Variables
 
-### Local Development
-
-Create a `.env` file in the root directory:
-```
-GROQ_API_KEY=your_groq_api_key_here
-```
-
-For frontend, create `frontend/.env.local` (optional):
-```
-REACT_APP_API_URL=http://localhost:8888
-```
-
-## 🛠️ Development Commands
-
-```bash
-# Quick start (runs both frontend and backend)
-./run.sh
-
-# Or run separately:
-
-# Backend
-source venv/bin/activate
-python server.py          # Runs on http://localhost:8888
-
-# Frontend
-cd frontend
-npm start                 # Runs on http://localhost:3000
-npm run build             # Production build
-```
-
-## 📄 License
 
 This project is created for the Gupshup AI Engineer assignment.
 
-## 🤝 Contributing
-
-This is an assignment submission. For questions or feedback, please contact the assignment evaluator.
